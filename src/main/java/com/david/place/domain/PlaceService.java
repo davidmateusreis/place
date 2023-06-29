@@ -19,7 +19,7 @@ public class PlaceService {
     public Mono<Place> create(PlaceRequest placeRequest) {
         var place = new Place(null, placeRequest.name(), slug.slugify(placeRequest.name()), placeRequest.city(),
                 placeRequest.state(),
-                placeRequest.createdAt(), placeRequest.updatedAt());
+                null, null);
         return placeRepository.save(place);
     }
 }
