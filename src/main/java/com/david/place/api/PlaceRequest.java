@@ -1,6 +1,8 @@
 package com.david.place.api;
 
+import jakarta.validation.constraints.NotBlank;
+
 public record PlaceRequest(
-                String name, String city, String state) {
+        @NotBlank String name, @NotBlank String city, @NotBlank String state) {
 
 }
