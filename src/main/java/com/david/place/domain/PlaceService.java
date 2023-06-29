@@ -1,10 +1,9 @@
 package com.david.place.domain;
 
-import org.springframework.stereotype.Service;
+import com.david.place.api.PlaceRequest;
 
 import reactor.core.publisher.Mono;
 
-@Service
 public class PlaceService {
 
     private PlaceRepository placeRepository;
@@ -13,7 +12,9 @@ public class PlaceService {
         this.placeRepository = placeRepository;
     }
 
-    public Mono<Place> create(Place place) {
+    public Mono<Place> create(PlaceRequest placeRequest) {
+        var place = new Place(null, placeRequest.name(), placeRequest.slug(), placeRequest.city(), placeRequest.state(),
+                placeRequest.createdAt(), placeRequest.updatedAt());
         return placeRepository.save(place);
     }
 }
